@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 350968005}
   - component: {fileID: 350968004}
-  - component: {fileID: 350968003}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -141,27 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &350968003
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350968002}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b81b71eb0d2f7cf438c79a92fb1cb7cf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &350968004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -546,8 +524,56 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: be52301f-6f61-498e-8322-92047980b603
     m_ActionName: Character/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 936474568}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Block
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a5469486-25fb-4ecf-bb38-a3319cf886d0
+    m_ActionName: Character/Block
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 936474568}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Punch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ee7b63d5-d04c-431a-a0b9-8160c5256985
+    m_ActionName: Character/Punch
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 936474568}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Roll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4c8d3e5d-fbb5-4a02-b5b2-03b9a9a20cc3
+    m_ActionName: Character/Roll[/Keyboard/ctrl]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Player
   m_DefaultActionMap: Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -590,10 +616,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47120b2d0ddddbf498ba20bf4a71470c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  rb: {fileID: 0}
+  anim: {fileID: 936474564}
+  rb: {fileID: 936474567}
   speed: 4
+  rollSpeed: 8
+  inputVelocity: {x: 0, y: 0}
+  cachedDirection: {x: 0, y: 0}
   flipped: 0
+  shouldPunch: 0
+  shouldBlock: 0
+  shouldRoll: 0
+  blockDuration: 0.5
+  blockFinishTime: 0
 --- !u!1 &1415535686
 GameObject:
   m_ObjectHideFlags: 0
