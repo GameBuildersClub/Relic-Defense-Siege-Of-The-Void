@@ -5,12 +5,18 @@ Relic Defense: Siege of the Void
 # Step-by-Step
 ## Introduction: The Basics
 1. Introduce Unity UI: Hierarchy, Scene View, Game View, Inspector, Asset Menu.
-1. Explain GameObjects and Transforms (empty GameObjects)
-1. Add a default sprite to scene
-1. Explain overview of relevant parts of code: variables, properties, methods, objects/classes. 
+1. Asset Menu: basically a file browser that shows all of your files. Changing branches in GitHub modifies your files and Unity reloads those.
+1. Hierarchy: objects in the scene, objects can be children or parents.
+1. Scene View: see the objects, tools to move around.
+1. Game View: see what the camera shows.
+1. Inspector: see components on an object. Every object has a transform. You can modify the values and you can drag numerical values to increase/decrease them. Empty GameObjects are objects without any extra components (just the transform). Other objects already have components, like square sprites having a sprite renderer.
+1. Explain opening a scene and seeing objects.
+1. Make sure there's a square sprite in the scene.
+1. Create a player controller script for the sprite.
+1. Explain overview of relevant parts of code: everything is in classes, variables, properties, methods.
 1. Explain visibility ("public", "protected", "" (package private), "private") and SerializeField for variables in inspector: default to protected
-1. Create a test script: explain Monobehaviour methods (awake, start, update, fixedupdate)
-1. Add basic code to each part of the script to indicate use
+1. Explain all classes that you want to attach as components extend Monobehaviour, so they get all of Monobehavior's functionality. Monobehaviour methods (awake, start, update, fixedupdate)
+1. Add basic code to each part of the script to indicate use (debug.log).
 
 ## Introduction: Moving a Character
 1. Show character sprites: show Sprite inspector menu and add to scene
