@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class AttackData
 {
-    protected float damage;
+    [SerializeField] protected float damage;
     public float Damage { get { return damage; } }
 
-    public Action<Attackable> beforeDamage;
-    public Action<Attackable, float, float> onDamage; // float, float represents damage taken and damage intended
+    [SerializeField] public Action<Attackable> beforeDamage;
+    [SerializeField] public Action<Attackable, float, float> onDamage; // float, float represents damage taken and damage intended
 
     public AttackData(float damage = 0)
     {

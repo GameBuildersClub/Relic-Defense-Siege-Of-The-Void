@@ -33,7 +33,7 @@ public class BasicEnemy : Enemy
         float hitTimeDiff = Time.fixedTime - timeLastHit;
         if (hitTimeDiff < hitColorDuration)
         {
-            spriteRenderer.color = Color.Lerp(initialColor, hitColor, hitTimeDiff / hitColorDuration);
+            spriteRenderer.color = Color.Lerp(initialColor, hitColor, 1 - (hitTimeDiff / hitColorDuration));
         } else
         {
             spriteRenderer.color = initialColor;
