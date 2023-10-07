@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Attackable
 {
     [SerializeField] protected List<EnemyBehavior> behaviors = new List<EnemyBehavior>();
     [SerializeField] protected PlayerController target;
