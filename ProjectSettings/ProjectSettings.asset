@@ -155,7 +155,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.Relic-Defense---Siege-of-the-Void
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -590,8 +591,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Relic Defense - Siege of the Void
-  metroPackageVersion: 
+  metroPackageName: RelicDefense-SiegeoftheVoid
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -599,7 +600,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Relic Defense - Siege of the Void
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Relic Defense - Siege of the Void
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

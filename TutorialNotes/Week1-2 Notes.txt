@@ -1,0 +1,28 @@
+Week 1-2 Notes:
+
+How to punch:
+
+- Animation to punch (add sprite for punch and sprite for effect)
+- Button to activate animation
+- Add transition from run to punch so that it works while running
+- No punching while moving! Add check to see if in animator state, no moving.
+- Collider for player punch hitbox
+- Hitbox script (OnTriggerEnter)
+- Debug log when hitbox overlaps
+- Add a basic square with a collider (named enemy) to check collisions
+- Add the enemy animation to the square
+- Add an enemy script (damage method)
+- From hitbox script call damage if tryget works
+- Yay!
+
+- Enemy animation for punch (add basic circle for hitbox, enable hitbox in animation)
+- Add collider for circle
+- Same steps as player hitbox... create an enemy hitbox and check for player
+- Add health and damage function to playercontroller
+- Make it so animation is always playing
+- Test!
+
+- Probably need workaround for bug: method for hitting all overlapping players, call method in animation, don't disable hitbox in animation, only change sprite in animation)
+- Check for work!
+
+- Move enemy to player
