@@ -1,0 +1,40 @@
+Notes for moving from week 1 to week 2.
+
+Outline:
+- First, questions about anything from last tutorial?
+- Questions about any Unity related subjects? What do you need to work on in your projects right now?
+- Make sure we're working on branch week-1 (and branch to something else so we leave the branch-1 version)
+
+- Create bool to flip player rotation
+- Check flip whenever player moves
+- Create player punch animation
+- Hook up button (click or something) to make player punch
+- Create an empty object and add a collider to it
+- In the animation, make the gameobject with the collider enable
+- Make a square sprite on that gameobject so that we can see when the collider is enabled
+- Test it!
+- Add an attacker script to the gameobject with the collider
+- OnTriggerEnter/Stay method
+	- but wait! how do we know if it's the enemy's hitbox that enters
+- Make an enemy script
+	- give it health
+	- method to damage enemy, debug log
+- Back in attacker class, TryGetComponent<Enemy> on the collision object
+- Damage it
+- Debug log it
+- Test it!
+
+- Create enemy movement:
+	- simple enemy move towards player
+	- stop when near player
+	- then, enemy lifts some sprite
+	- then, enemy attacks player with sprite
+- player script needs to have health
+
+- Other things we should do?
+	- pausing
+	- events triggering when player walks somewhere (like player picking up an object or a door opening)
+	- walls (simple, add colliders)
+	- Suggestions?
+
+- Cover UI: player healthbar, xp bar, 
