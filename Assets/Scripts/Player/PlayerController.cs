@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5;
     [SerializeField] Vector3 targetVelocity;
     [SerializeField] float health = 100;
+    [SerializeField] UIHealthController healthController;
+    [SerializeField] UIChargeController chargeController;
 
     public void Move(InputAction.CallbackContext ctxt)
     {
@@ -53,6 +55,12 @@ public class PlayerController : MonoBehaviour
     public void Damage(float damage)
     {
         health -= damage;
+        healthController.UpdateHealth(health);
         Debug.Log("Player health is " + health);
+    }
+
+    public bool PunchCharged()
+    {
+        return chargeController.Charged();
     }
 }
