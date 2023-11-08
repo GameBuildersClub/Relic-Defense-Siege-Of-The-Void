@@ -1,0 +1,36 @@
+Week 2-3 Notes and Steps
+
+Working on UI.
+
+Setup
+- Create a canvas. This create an event system - make sure you click the button for replacing with input system.
+- Under canvas > UI Scale Mode, change it to scale with screen size
+
+- Add a UI element and anchor it
+- Showcase how anchoring changes how the UI scales to different screen sizes (anchor title in middle then top)
+
+Multiple techniques for healthbar
+1. Modify a slider
+  - Make handle invisible
+  - Stretch fill area to end
+  - Now, change value and it works!
+2. Change a sprite to be different depending on certain health values (a lot of work) (good for integer health with low values)
+  - This requires maintaining a list of sprites. I've made this for other projects for enemy healthbars that dispaly under them, but I haven't done this for UI.
+3. Taking inspiration from a slider, stretch a mask over a sprite
+  - Create healthbar image
+  - Create child of this object with rect mask
+  - Create child of rect mask to represent health filling
+  - Position health filling properly (y = 50) and anchor it to the bottom of its parent
+  - also anchor rect mask to bottom of parent
+  - Now, decreasing the height by 2 and y-pos by 1 will shrink the healthbar (2:1 ratio makes the mask maintain the position of its bottom)
+  - pos y of 16.3 will decrease all the way
+  - pos y of 32.1 will be full
+  - Make a script to drive the posy and height values based on the health
+    - make dummy health with [Range(0, 100)] attribute to watch it change in fixed update
+    - full_y, max_y, min_y, max_height
+    - reference code on demo test branch
+  - Now we can add the animation for this healthbar! This is the reason we use this method and not the stretching because stretching will make it look weird.
+  - Finally, hook this component up to the player
+
+
+Pause Menu: GameManager to control pause and OnPause events
