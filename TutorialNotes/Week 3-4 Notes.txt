@@ -1,0 +1,66 @@
+Step by Step:
+
+Let's make an event system! First, GameManager class to showcase: what is a delegate and what is an event?
+
+Example (describe what's going on here): 
+	public delegate bool GameManagerEvent(GameManager gm);
+	public event GameManagerEvent onGameManagerDoStuff;
+	// In another script somewhere:
+	gameManagerObject.onGameManagerDoStuff += (gm) => false;
+	// Or
+	gameManagerObject.onGameManagerDoStuff += MyGMEventFunction;
+	public bool MyGMEventFunction(GameManager gm) { someCounter++; return true; }
+
+So, let's create a pause system!
+First, let's create an Instance for our GameManager so that anything can easily access it. This is called a Singleton design pattern. (Check on Awake if the instance is already set)
+Next, the player will hit pause. We need to route this from player input to the GameManager (so make a method in GameManager OR create a Paused property - I like that way). This involves tracking if the game is paused in the GameManager.
+Then, create an event for pausing in the GameManager. We can use a delegate that already exists: System.Action<T> where T is a bool. This allows us to say, it is paused yes or no?
+Allow all objects to subscribe to this event.
+Subscribe enemies to this event, for example (make sure to unsubscribe when they're destroyed).
+
+What to do in PlayerController to not move while Paused? In FixedUpdate, set velocity to 0 whenever Paused, targetVelocity otherwise. Also, in Awake, subscribe to OnPause and set the animator speed to 0 whenever it's paused.
+
+Can do a similar thing in the enemy. Make sure that for enemies, we unsubscribe from the event when they're destroyed. This can cause issues if we forget to do this.
+
+
+Now, let's look at scene management. First, let's make another scene.
+Step 1: Unsubscribe all events fron the event handler. Switching scenes and we shouldn't carry stuff over.
+	if (onPause != null)
+        {
+            foreach (System.Delegate deleg in onPause.GetInvocationList())
+            {
+                onPause -= (deleg as System.Action<bool>);
+            }
+        }
+We can also add this line to GameManager Awake:
+        DontDestroyOnLoad(gameObject);
+Also, add line to GameManager in OnDestroy:
+	instance = null;
+Because static variables don't change, we need to make sure they are set.
+This way, we keep one instance of the GameManager, per the Singleton design pattern.
+
+Step 2: Drag UI, enemy, player, gamemanager (not necessary because it's very simple) into asset menu as prefabs
+We may need to drag player + the player HUD into the asset menu to make it one prefab because we have links between the player and the UI.
+Don't drag GameManager into that prefab because we can't put it into DontDestroyOnLoad if it's a child object.
+Now, add a bunch more enemies to the second scene. Save it and switch back.
+
+Step 3: Let's make a variable, similar to paused, where we keep track of the enemies. If this variable ever changes to 0, we can switch scenes. Enemies can modify this variable when they die.
+
+Step 4: Add scenes to the "Scenes in Build" under file > build settings.
+
+Yay!
+
+Now, let's look at custom time.
+First: decide what time we want to use. FixedTime or Time? Explain the difference.
+
+Let's use FixedTime just because I like it :) and I like working in sync with the physics engine.
+
+Create a time variable in GameManager, a float to keep track of time. Then, create a timescale and a delta time variable in GameManager.
+Actually, these can go in another class. Let's make a new class (it doesn't have to be monobehavior) and we can store it in gamemanager.
+
+Add a Tick() method to increment time on each update.
+In GameManager, call Tick every frame.
+
+In TimeController, we can create an event for whenever timescale changes: System.Action<float> so that we can modify speeds and such whenever the time scale changes.
+
+Then, what we can actually do, is treat this system as a pause. So, whenever timescale is 0, we can consider the game paused. This requires us to modify GameManager accordingly.

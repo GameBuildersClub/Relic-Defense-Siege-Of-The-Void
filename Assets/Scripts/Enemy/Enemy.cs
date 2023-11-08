@@ -25,6 +25,20 @@ public class Enemy : MonoBehaviour
         {
             target = FindObjectOfType<PlayerController>();
         }
+
+        GameManager.Instance.onPause += OnGamePaused;
+        GameManager.Instance.AddEnemy();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.onPause -= OnGamePaused;
+        GameManager.Instance.RemoveEnemy();
+    }
+
+    public void OnGamePaused(bool paused)
+    {
+        anim.speed = paused ? 0 : 1;
     }
 
     public void Damage(float damage)
@@ -39,6 +53,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.Paused)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         MoveAndAttack();
     }
 

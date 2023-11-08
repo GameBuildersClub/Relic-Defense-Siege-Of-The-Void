@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
     {
         healthController.UpdateHealth(health);
         Debug.Log("Player health is " + health);
+
+        GameManager.Instance.onPause += (paused) =>
+        {
+            anim.speed = paused ? 0 : 1;
+        };
     }
 
     public void Move(InputAction.CallbackContext ctxt)
@@ -49,6 +54,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.Paused)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("WiseOnePunch"))
         {
             rb.velocity = Vector3.zero;
@@ -68,5 +79,10 @@ public class PlayerController : MonoBehaviour
     public bool PunchCharged()
     {
         return chargeController.Charged();
+    }
+
+    public void TogglePause(InputAction.CallbackContext ctxt)
+    {
+        GameManager.Instance.Paused = !GameManager.Instance.Paused;
     }
 }
