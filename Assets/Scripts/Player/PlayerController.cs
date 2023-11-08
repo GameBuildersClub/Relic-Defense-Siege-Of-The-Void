@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] UIHealthController healthController;
     [SerializeField] UIChargeController chargeController;
 
+    private void Awake()
+    {
+        healthController.UpdateHealth(health);
+        Debug.Log("Player health is " + health);
+    }
+
     public void Move(InputAction.CallbackContext ctxt)
     {
         Vector2 direction = ctxt.ReadValue<Vector2>();

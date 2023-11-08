@@ -12,7 +12,7 @@ public class UIHealthController : MonoBehaviour
     public void UpdateHealth(float health)
     {
         Vector2 size = rectTransform.sizeDelta;
-        size.x = (health / 100) * (maxHeight - minHeight) + minHeight;
+        size.y = (health / 100) * (maxHeight - minHeight) + minHeight;
         rectTransform.sizeDelta = size;
     }
 }
